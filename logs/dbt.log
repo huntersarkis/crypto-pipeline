@@ -1,0 +1,33 @@
+[0m09:58:57.652280 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000017AE0D5E310>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000017ADFD2D250>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000017AE0D5FED0>]}
+
+
+============================== 09:58:57.682787 | 571fa21d-a4c3-49ab-a4c8-f723ed78005a ==============================
+[0m09:58:57.682787 [info ] [MainThread]: Running with dbt=1.11.8
+[0m09:58:57.684511 [debug] [MainThread]: running dbt with arguments {'version_check': 'True', 'no_print': 'None', 'static_parser': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'target_path': 'None', 'printer_width': '80', 'write_json': 'True', 'introspect': 'True', 'log_cache_events': 'False', 'empty': 'None', 'cache_selected_only': 'False', 'log_format': 'default', 'debug': 'False', 'fail_fast': 'False', 'profiles_dir': 'C:\\Users\\Hunter\\.dbt', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'partial_parse': 'True', 'invocation_command': 'dbt -- init crypto_dbt', 'indirect_selection': 'eager', 'use_colors': 'True', 'use_experimental_parser': 'False', 'log_path': 'logs'}
+[0m09:58:57.783957 [info ] [MainThread]: Creating dbt configuration folder at C:\Users\Hunter\.dbt
+[0m09:58:57.786992 [debug] [MainThread]: Starter project path: C:\Users\Hunter\crypto_project\venv\Lib\site-packages\dbt\include\starter_project
+[0m09:58:57.965274 [info ] [MainThread]: 
+Your new dbt project "crypto_dbt" was created!
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m09:58:57.967825 [info ] [MainThread]: Setting up your profile.
+[0m09:59:37.536542 [debug] [MainThread]: Snowflake adapter: Setting snowflake.connector to ERROR (file logging only)
+[0m09:59:37.536542 [debug] [MainThread]: Snowflake adapter: Setting botocore to ERROR (file logging only)
+[0m09:59:37.536542 [debug] [MainThread]: Snowflake adapter: Setting boto3 to ERROR (file logging only)
+[0m10:01:29.136085 [info ] [MainThread]: Profile crypto_dbt written to C:\Users\Hunter\.dbt\profiles.yml using target's profile_template.yml and your supplied values. Run 'dbt debug' to validate the connection.
+[0m10:01:29.139447 [debug] [MainThread]: Command `-c init` succeeded at 10:01:29.139447 after 151.68 seconds
+[0m10:01:29.140588 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000017ADFAD7BD0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000017ADFD3A3D0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000017AE0D86DD0>]}
+[0m10:01:29.142723 [debug] [MainThread]: Flushing usage events
+[0m10:01:30.966276 [debug] [MainThread]: An error was encountered while trying to flush usage events
