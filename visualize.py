@@ -1,6 +1,7 @@
 import snowflake.connector
 import pandas as pd
 import matplotlib.pyplot as plt
+import matplotlib.patches as mpatches
 import os
 from dotenv import load_dotenv
 
@@ -17,21 +18,33 @@ conn = snowflake.connector.connect(
 
 df = pd.read_sql("SELECT * FROM crypto.transforms.prices_clean", conn)
 
-fig, axes = plt.subplots(1, 2, figsize=(12, 5))
+colors = {"BITCOIN": "#F7931A", "ETHEREUM": "#627EEA", "RIPPLE": "#00AAE4", "SOLANA": "#9945FF"}
 
-# Price bar chart
-axes[0].bar(df["COIN"], df["PRICE_USD"], color=["orange", "blue", "green", "purple"])
-axes[0].set_title("Crypto Prices (USD)")
-axes[0].set_ylabel("Price (USD)")
+fig, axes = plt.subplots(1, 4, figsize=(16, 4))
+fig.patch.set_facecolor("#1e1e1e")
 
-# 24hr change bar chart
-colors = ["green" if x > 0 else "red" for x in df["CHANGE_24H_PCT"]]
-axes[1].bar(df["COIN"], df["CHANGE_24H_PCT"], color=colors)
-axes[1].set_title("24hr Change (%)")
-axes[1].set_ylabel("Change (%)")
-axes[1].axhline(y=0, color="black", linewidth=0.8)
+for i, (_, row) in enumerate(df.iterrows()):
+    ax = axes[i]
+    coin = row["COIN"]
+    change = row["CHANGE_24H_PCT"]
+    color = colors.get(coin, "gray")
+    change_color = "#00ff88" if change >= 0 else "#ff4444"
 
+    ax.set_facecolor("#2a2a2a")
+    ax.set_xlim(0, 1)
+    ax.set_ylim(0, 1)
+    ax.axis("off")
+
+    ax.text(0.5, 0.75, coin, ha="center", va="center",
+            fontsize=14, fontweight="bold", color=color)
+    ax.text(0.5, 0.5, f"${row['PRICE_USD']:,.2f}", ha="center", va="center",
+            fontsize=18, fontweight="bold", color="white")
+    ax.text(0.5, 0.25, f"{change:+.2f}% {row['DIRECTION']}", ha="center", va="center",
+            fontsize=12, color=change_color)
+
+plt.suptitle("Crypto Portfolio Dashboard", fontsize=16,
+             fontweight="bold", color="white", y=1.02)
 plt.tight_layout()
-plt.savefig("crypto_chart.png")
+plt.savefig("crypto_chart.png", bbox_inches="tight", facecolor="#1e1e1e")
 plt.show()
 print("Chart saved!")
